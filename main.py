@@ -1,8 +1,7 @@
 from classes.game import player
-from colorama import Fore
 from classes.items import items
 import time
-print(Fore.YELLOW+"""
+print("""
 ************************************************************************************************************************
 WELCOME TO COMMAND-LINE WRESTLING GAME
 COPYRIGHT(C) 2019 SHAIKH AQUIB
@@ -93,7 +92,7 @@ nameDict.append(player_20.get_Name())
 def choose_Player():
     n=1
     for i in nameDict:
-        print(Fore.LIGHTCYAN_EX,n,i)
+        print(n,i)
         n+=1
     choice=int(input("Enter the number of the player you want"))
     return choice
@@ -263,9 +262,9 @@ while running == True:
     name_Of_Player().take_Damage(dmg)
     #checking health if its less than 20.. if we found then we change it to 20 coz we dont want negatives or zero
     name_Of_Player().modify_Health()
-    print(Fore.RED+"Opponent Attacked With Points: ", dmg)
+    print("Opponent Attacked With Points: ", dmg)
     time.sleep(2)
-    print(Fore.LIGHTGREEN_EX+"YOUR HEALTH : ", name_Of_Player().get_HP(), "\nENEMY HEALTH : ", name_Of_Opponent().get_HP())
+    print("YOUR HEALTH : ", name_Of_Player().get_HP(), "\nENEMY HEALTH : ", name_Of_Opponent().get_HP())
     time.sleep(1)
     print("")
     #checking if health is low and that if the games needs to be paused
@@ -288,28 +287,28 @@ while running == True:
             object_choice = int(input("Which object you wish to choose enter 0 to continue without object? Enter number: "))
             if object_choice==1:
                 name_Of_Opponent().take_Damage(hammer.get_Item_Points())
-                print(Fore.GREEN + "You Attacked With Points", hammer.get_Item_Points())
+                print("You Attacked With Points", hammer.get_Item_Points())
 
             elif object_choice==2:
                 name_Of_Opponent().take_Damage(table.get_Item_Points())
-                print(Fore.GREEN + "You Attacked With Points", table.get_Item_Points())
+                print("You Attacked With Points", table.get_Item_Points())
                 time.sleep(2)
                 print("YOUR HEALTH : ", name_Of_Player().get_HP(), "\nENEMY HEALTH : ", name_Of_Opponent().get_HP())
 
             elif object_choice==3:
                 name_Of_Opponent().take_Damage(chair.get_Item_Points())
-                print(Fore.GREEN + "You Attacked With Points", chair.get_Item_Points())
+                print("You Attacked With Points", chair.get_Item_Points())
                 time.sleep(2)
                 print("YOUR HEALTH : ", name_Of_Player().get_HP(), "\nENEMY HEALTH : ", name_Of_Opponent().get_HP())
 
             elif object_choice==4:
                 name_Of_Opponent().take_Damage(rod.get_Item_Points())
-                print(Fore.GREEN + "You Attacked With Points", rod.get_Item_Points())
+                print("You Attacked With Points", rod.get_Item_Points())
                 time.sleep(2)
                 print("YOUR HEALTH : ", name_Of_Player().get_HP(), "\nENEMY HEALTH : ", name_Of_Opponent().get_HP())
             elif object_choice == 5:
                 name_Of_Opponent().take_Damage(rod.get_Item_Points())
-                print(Fore.GREEN + "You Attacked With Points", rod.get_Item_Points())
+                print("You Attacked With Points", rod.get_Item_Points())
                 time.sleep(2)
                 print("YOUR HEALTH : ", name_Of_Player().get_HP(), "\nENEMY HEALTH : ", name_Of_Opponent().get_HP())
 
@@ -318,21 +317,21 @@ while running == True:
             name_Of_Opponent().modify_Health()
             dmg1 = name_Of_Player().generate_Damage()
             name_Of_Opponent().take_Damage(dmg1)
-            print(Fore.GREEN+"You Attacked With Points", dmg1)
+            print("You Attacked With Points", dmg1)
             time.sleep(2)
             print("YOUR HEALTH : ", name_Of_Player().get_HP(), "\nENEMY HEALTH : ", name_Of_Opponent().get_HP())
             time.sleep(1)
             print("")
             guess = name_Of_Opponent().health_Is_Low()
             if guess == True:
-                print("You Just Defeated this Dumbass Enemy.... CONGRATS YOU WON..!!!!",name_Of_Player().get_Name())
+                print("You Just Defeated this",name_Of_Opponent().get_Name()," CONGRATS YOU WON..!!!!",name_Of_Player().get_Name())
                 running = False
 
         elif type_choice == 2:
 
             index=int(finisher_Number(name_Of_Player().name))
             name_Of_Opponent().modify_Health()
-            print(Fore.LIGHTBLUE_EX+finisher[index]['message'])
+            print(finisher[index]['message'])
             dmg1 = generate_Finisher(index)
             name_Of_Opponent().take_Damage(dmg1)
             print("You Attacked With Points", dmg1)
