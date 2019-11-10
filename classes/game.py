@@ -62,4 +62,3 @@ class player:
         if self.health_Is_Low()==True:
             self.ply_health=20
 
-

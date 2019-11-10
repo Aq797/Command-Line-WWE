@@ -1,5 +1,6 @@
 from classes.game import player
 from classes.items import items
+import random
 import time
 print("""
 ************************************************************************************************************************
@@ -34,26 +35,26 @@ finisher=[{"name":"F5","power":144,"message":"+++ Here Comes Brock Lesnar +++ \n
 
 
 
-player_1 = player("Brock Lesnar",300,50,24,"F5")
-player_2 = player("Rock",200,50,30,"Rock Bottom")
-player_3 = player("Undertaker",300,50,39,"Tombstone")
-player_4 = player("Randy Orton",260,50,22,"RKO")
-player_5 = player("Rey Mysterio",297,50,28,"619")
-player_6 = player("Kane",206,50,27,"ChokeSlam")
-player_7 = player("Big Show",242,50,25,"ShowStopper")
-player_8 = player("Rikishi",280,80,40,"Ass to Face")
-player_9 = player("Triple H",283,50,32,"Pedigree")
-player_10 = player("John Cena",223,50,37,"Attitude Adjustment")
-player_11 = player("Batista",299,50,12,"Batista Bomb")
-player_12 = player("Roman Reigns",236,50,33,"Spear")
-player_13 = player("Kofi Kingston",244,50,16,"S.O.S")
-player_14 = player("Great Khali",210,50,35,"Vise Grip")
-player_15 = player("Stone Cold",259,50,21,"Stone Cold Stunner")
-player_16 = player("Jeff Hardy",220,50,18,"The Swanton Bomb")
-player_17 = player("Shawn Michaels",265,50,39,"Sweet Chin Music")
-player_18 = player("Shemas",201,50,20,"Brogue Kick")
-player_19 = player("Sincara",218,50,23,"Moonsault Side Slam")
-player_20 = player("Kurt Angle",274,50,29,"Angle Slam")
+player_1 = player("Brock Lesnar",600,50,24,"F5")
+player_2 = player("Rock",600,50,30,"Rock Bottom")
+player_3 = player("Undertaker",600,50,39,"Tombstone")
+player_4 = player("Randy Orton",600,50,22,"RKO")
+player_5 = player("Rey Mysterio",600,50,28,"619")
+player_6 = player("Kane",600,50,27,"ChokeSlam")
+player_7 = player("Big Show",600,50,25,"ShowStopper")
+player_8 = player("Rikishi",600,80,40,"Ass to Face")
+player_9 = player("Triple H",600,50,32,"Pedigree")
+player_10 = player("John Cena",600,50,37,"Attitude Adjustment")
+player_11 = player("Batista",600,50,12,"Batista Bomb")
+player_12 = player("Roman Reigns",600,50,33,"Spear")
+player_13 = player("Kofi Kingston",600,50,16,"S.O.S")
+player_14 = player("Great Khali",600,50,35,"Vise Grip")
+player_15 = player("Stone Cold",600,50,21,"Stone Cold Stunner")
+player_16 = player("Jeff Hardy",600,50,18,"The Swanton Bomb")
+player_17 = player("Shawn Michaels",600,50,39,"Sweet Chin Music")
+player_18 = player("Shemas",600,50,20,"Brogue Kick")
+player_19 = player("Sincara",600,50,23,"Moonsault Side Slam")
+player_20 = player("Kurt Angle",600,50,29,"Angle Slam")
 
 
 
@@ -101,6 +102,9 @@ def choose_Opponent():
     choice=int(input("Enter the number of the opponent you want"))
     return choice
 
+def generate_Random_Number(s,e):
+    return random.randrange(s,e)
+
 def finisher_Number(n):
     if n == 'Brock Lesnar':
         u=0
@@ -136,9 +140,9 @@ def finisher_Number(n):
         u=15
     elif n == 'Shawn Michaels':
         u=16
-    elif n == 'Shemus':
+    elif n == 'Shemas':
         u=17
-    elif n == 'Sincare':
+    elif n == 'Sincara':
         u=18
     elif n == 'Kurt Angle':
         u=19
@@ -147,134 +151,196 @@ def finisher_Number(n):
 #boxes for storing the number of player and enemy that we got from the above functions
 box1=choose_Player()
 box2=choose_Opponent()
+box3=generate_Random_Number(1,21)
 
 player_name="null"
 opponent_name="null"
-
+partner_name="null"
 #for storing the name of the chosen player
-def name_Of_Player():
-    if box1==1:
-        player_name=player_1
-    elif box1==2:
-        player_name=player_2
-    elif box1==3:
-        player_name=player_3
-    elif box1==4:
-        player_name=player_4
-    elif box1==5:
-        player_name=player_5
-    elif box1==6:
-        player_name=player_6
-    elif box1==7:
-        player_name=player_7
-    elif box1==8:
-        player_name=player_8
-    elif box1==9:
-        player_name=player_9
-    elif box1==10:
-        player_name=player_10
-    elif box1==11:
-        player_name=player_11
-    elif box1==12:
-        player_name=player_12
-    elif box1==13:
-        player_name=player_13
-    elif box1==14:
-        player_name=player_14
-    elif box1==15:
-        player_name=player_15
-    elif box1==16:
-        player_name=player_16
-    elif box1==17:
-        player_name=player_17
-    elif box1==18:
-        player_name=player_18
-    elif box1 == 19:
-        player_name = player_19
-    elif box1 == 20:
-        player_name = player_20
-    return player_name
+def generate_Player_Name(selection_of_flag,var_selection):
+    if selection_of_flag==1:
+        var_selection=player_1
+    elif selection_of_flag==2:
+        var_selection=player_2
+    elif selection_of_flag==3:
+        var_selection=player_3
+    elif selection_of_flag==4:
+        var_selection=player_4
+    elif selection_of_flag==5:
+        var_selection=player_5
+    elif selection_of_flag==6:
+        var_selection=player_6
+    elif selection_of_flag==7:
+        var_selection=player_7
+    elif selection_of_flag==8:
+        var_selection=player_8
+    elif selection_of_flag==9:
+        var_selection=player_9
+    elif selection_of_flag==10:
+        var_selection=player_10
+    elif selection_of_flag==11:
+        var_selection=player_11
+    elif selection_of_flag==12:
+        var_selection=player_12
+    elif selection_of_flag==13:
+        var_selection=player_13
+    elif selection_of_flag==14:
+        var_selection=player_14
+    elif selection_of_flag==15:
+        var_selection=player_15
+    elif selection_of_flag==16:
+        var_selection=player_16
+    elif selection_of_flag==17:
+        var_selection=player_17
+    elif selection_of_flag==18:
+        var_selection=player_18
+    elif selection_of_flag == 19:
+        var_selection = player_19
+    elif selection_of_flag == 20:
+        var_selection = player_20
+    return var_selection
 
-name_Of_Player()
-
-def name_Of_Opponent():
-    if box2==1:
-        opponent_name=player_1
-    elif box2==2:
-        opponent_name=player_2
-    elif box2==3:
-        opponent_name=player_3
-    elif box2==4:
-        opponent_name=player_4
-    elif box2==5:
-        opponent_name=player_5
-    elif box2==6:
-        opponent_name=player_6
-    elif box2==7:
-        opponent_name=player_7
-    elif box2==8:
-        opponent_name=player_8
-    elif box2==9:
-        opponent_name=player_9
-    elif box2==10:
-        opponent_name=player_10
-    elif box2==11:
-        opponent_name=player_11
-    elif box2==12:
-        opponent_name=player_12
-    elif box2==13:
-        opponent_name=player_13
-    elif box2==14:
-        opponent_name=player_14
-    elif box2==15:
-        opponent_name=player_15
-    elif box2==16:
-        opponent_name=player_16
-    elif box2==17:
-        opponent_name=player_17
-    elif box2==18:
-        opponent_name=player_18
-    elif box2==19:
-        opponent_name= player_19
-    elif box2==20:
-        opponent_name=player_20
-    return opponent_name
-
-name_Of_Opponent()
+name_of_player=generate_Player_Name(box1,player_name)
+name_of_opponent=generate_Player_Name(box2,opponent_name)
+name_of_partner=generate_Player_Name(box3,partner_name)
 
 
 def generate_Finisher(i):
    return finisher[i]['power']
 
+def print_Stats():
+    print("")
+    print("%s           %s"%(name_of_player.get_Name(),name_of_opponent.get_Name()))
+    print(name_of_player.get_HP(),"\t\t\t",name_of_opponent.get_HP())
 
-def hit_Object(self):
-    name_Of_Opponent().take_Damage()
+
+
+def Object_Attack(you,opponent,naemo):
+    #you are the person who attacks and opponent is the one u wish to hit
+    #naemo means the the string which will be used in print statement to either you or opponent
+    #nothing deep just had no clue what else to keep the name
+    if opponent==name_of_opponent:
+        if you==name_of_partner:
+            object_choice = generate_Random_Number(0, 6)
+        else:
+            object_choice = int(input("Which object you wish to choose enter 0 to continue without object? Enter number: "))
+    elif opponent==name_of_player:
+        object_choice = generate_Random_Number(0,6)
+    elif opponent==name_of_partner:
+        object_choice = generate_Random_Number(0, 6)
+
+    if object_choice == 1:
+        opponent.take_Damage(hammer.get_Item_Points())
+        print(naemo," Used Hammer to Attack",opponent.get_Name()," With Points", hammer.get_Item_Points())
+
+    elif object_choice == 2:
+        opponent.take_Damage(table.get_Item_Points())
+        print(naemo," Used Table to Attack",opponent.get_Name()," With Points", table.get_Item_Points())
+        time.sleep(2)
+
+    elif object_choice == 3:
+        opponent.take_Damage(chair.get_Item_Points())
+        print(naemo," Used Chair to Attack",opponent.get_Name()," With Points", chair.get_Item_Points())
+        time.sleep(2)
+
+    elif object_choice == 4:
+        opponent.take_Damage(rod.get_Item_Points())
+        print(naemo, " Used Rod to Attack",opponent.get_Name(), "With Points", rod.get_Item_Points())
+        time.sleep(2)
+
+    elif object_choice == 5:
+        opponent.take_Damage(stairs.get_Item_Points())
+        print(naemo, "Used Stairs to Attack",opponent.get_Name()," With Points", stairs.get_Item_Points())
+        time.sleep(2)
+
+    elif object_choice == 0:
+        dmg = you.generate_Damage()
+        opponent.take_Damage(dmg)
+        print(naemo, " Attacked",opponent.get_Name(), "With Points", dmg)
+        time.sleep(2)
+#to make players enter the ring by cheating
+def Cheating():
+    cheating_Choice=random.randrange(0,2)
+    if cheating_Choice==0:
+        print("Come on fight Harder...!!")
+    elif cheating_Choice==1:
+        Opponent_Choice1 = generate_Random_Number(1, 3)
+        print("Oh my God", name_of_partner.get_Name(), " has entered the ring... This is against the rules")
+        if Opponent_Choice1 == 1:
+            side_Choice=generate_Random_Number(1,3)
+            if side_Choice==1:
+                print("Oh my God he is trying to attack",name_of_opponent.get_Name())
+                dmg3=name_of_partner.generate_Damage()
+                name_of_opponent.take_Damage(dmg3)
+                print(name_of_partner.get_Name()," Attacked the",name_of_opponent.get_Name(),"with points",dmg3)
+                Object_Attack(name_of_partner, name_of_opponent, name_of_partner.get_Name())
+            elif side_Choice==2:
+                print("Oh my God he is trying to Attack ",name_of_player.get_Name())
+                dmg3=name_of_partner.generate_Damage()
+                name_of_player.take_Damage(dmg3)
+                print(name_of_partner.get_Name(), " Attacked You with points", dmg3)
+                Object_Attack(name_of_partner, name_of_player, name_of_partner.get_Name())
+
+            print_Stats()
+            print(name_of_partner.name, " Health: ",name_of_partner.get_HP())
+        elif Opponent_Choice1 == 2:
+            index11 = int(finisher_Number(name_of_partner.name))
+            name_of_player.modify_Health()
+            print(finisher[index11]['message'])
+            dmg4 = generate_Finisher(index11)
+            side_Choice2 = generate_Random_Number(1, 3)
+            if side_Choice2==1:
+                print("Oh my God he is trying to attack",name_of_opponent.get_Name())
+                name_of_opponent.take_Damage(dmg4)
+                print(name_of_partner.get_Name()," Attacked the",name_of_opponent.get_Name(),"with points",dmg4)
+            elif side_Choice2==2:
+                print("Oh my God he is trying to Attack ",name_of_player.get_Name())
+                name_of_player.take_Damage(dmg4)
+                print(name_of_partner.get_Name(), " Attacked You with points", dmg4)
+            print_Stats()
+            print(name_of_partner.name," Health: ",name_of_partner.get_HP())
+            time.sleep(2)
+
 
 list_of_Items=['Hammer','Table','Chair','Rod','Stairs']
-
+chance=0
 running = True
-print("YOUR HEALTH : ", name_Of_Player().get_HP(), "\nENEMY HEALTH : ", name_Of_Opponent().get_HP())
+print_Stats()
 
 while running == True:
 
     print(" ")
-    dmg = name_Of_Opponent().generate_Damage()
-    name_Of_Player().take_Damage(dmg)
+    Cheating()
+    Opponent_Choiceo = generate_Random_Number(1, 3)
+    if Opponent_Choiceo==1:
+        Object_Attack(name_of_opponent,name_of_player,name_of_opponent.get_Name())
+        print_Stats()
+    elif Opponent_Choiceo==2:
+        index = int(finisher_Number(name_of_opponent.name))
+        name_of_player.modify_Health()
+        print(finisher[index]['message'])
+        dmg1 = generate_Finisher(index)
+        name_of_player.take_Damage(dmg1)
+        print("Enemy Attacked With Points", dmg1)
+        print_Stats()
+        time.sleep(2)
     #checking health if its less than 20.. if we found then we change it to 20 coz we dont want negatives or zero
-    name_Of_Player().modify_Health()
-    print("Opponent Attacked With Points: ", dmg)
-    time.sleep(2)
-    print("YOUR HEALTH : ", name_Of_Player().get_HP(), "\nENEMY HEALTH : ", name_Of_Opponent().get_HP())
+    name_of_player.modify_Health()
     time.sleep(1)
     print("")
     #checking if health is low and that if the games needs to be paused
-    guess = name_Of_Player().health_Is_Low()
+    guess = name_of_player.health_Is_Low()
     if guess == True:
+        chance=chance+1
+        if chance==1:
+            name_of_player.ply_health=name_of_player.ply_health+80
+            print("Giving You first time bonus of 80")
+        else:
         #displaying low health message
-       name_Of_Player().low_Health_Message()
-       running = False
+            name_of_player.low_Health_Message()
+            running = False
     else:
-        type_choice = name_Of_Player().choose_Action()
+        type_choice = name_of_player.choose_Action()
         print("")
 
         if type_choice == 1:
@@ -284,64 +350,30 @@ while running == True:
             for item in list_of_Items:
                 print(o,item)
                 o+=1
-            object_choice = int(input("Which object you wish to choose enter 0 to continue without object? Enter number: "))
-            if object_choice==1:
-                name_Of_Opponent().take_Damage(hammer.get_Item_Points())
-                print("You Attacked With Points", hammer.get_Item_Points())
-
-            elif object_choice==2:
-                name_Of_Opponent().take_Damage(table.get_Item_Points())
-                print("You Attacked With Points", table.get_Item_Points())
-                time.sleep(2)
-                print("YOUR HEALTH : ", name_Of_Player().get_HP(), "\nENEMY HEALTH : ", name_Of_Opponent().get_HP())
-
-            elif object_choice==3:
-                name_Of_Opponent().take_Damage(chair.get_Item_Points())
-                print("You Attacked With Points", chair.get_Item_Points())
-                time.sleep(2)
-                print("YOUR HEALTH : ", name_Of_Player().get_HP(), "\nENEMY HEALTH : ", name_Of_Opponent().get_HP())
-
-            elif object_choice==4:
-                name_Of_Opponent().take_Damage(rod.get_Item_Points())
-                print("You Attacked With Points", rod.get_Item_Points())
-                time.sleep(2)
-                print("YOUR HEALTH : ", name_Of_Player().get_HP(), "\nENEMY HEALTH : ", name_Of_Opponent().get_HP())
-            elif object_choice == 5:
-                name_Of_Opponent().take_Damage(rod.get_Item_Points())
-                print("You Attacked With Points", rod.get_Item_Points())
-                time.sleep(2)
-                print("YOUR HEALTH : ", name_Of_Player().get_HP(), "\nENEMY HEALTH : ", name_Of_Opponent().get_HP())
-
-            elif object_choice==0:
-                continue
-            name_Of_Opponent().modify_Health()
-            dmg1 = name_Of_Player().generate_Damage()
-            name_Of_Opponent().take_Damage(dmg1)
-            print("You Attacked With Points", dmg1)
-            time.sleep(2)
-            print("YOUR HEALTH : ", name_Of_Player().get_HP(), "\nENEMY HEALTH : ", name_Of_Opponent().get_HP())
-            time.sleep(1)
+            Object_Attack(name_of_player,name_of_opponent,"You")
+            name_of_opponent.modify_Health()
+            print_Stats()
             print("")
-            guess = name_Of_Opponent().health_Is_Low()
+            guess = name_of_opponent.health_Is_Low()
             if guess == True:
-                print("You Just Defeated this",name_Of_Opponent().get_Name()," CONGRATS YOU WON..!!!!",name_Of_Player().get_Name())
+                print("You Just Defeated this",name_of_opponent.get_Name()," CONGRATS YOU WON..!!!!",name_of_player.get_Name())
                 running = False
 
         elif type_choice == 2:
 
-            index=int(finisher_Number(name_Of_Player().name))
-            name_Of_Opponent().modify_Health()
+            index=int(finisher_Number(name_of_player.name))
+            name_of_opponent.modify_Health()
             print(finisher[index]['message'])
             dmg1 = generate_Finisher(index)
-            name_Of_Opponent().take_Damage(dmg1)
+            name_of_opponent.take_Damage(dmg1)
             print("You Attacked With Points", dmg1)
             time.sleep(2)
-            print("YOUR HEALTH : ", name_Of_Player().get_HP(), "\nENEMY HEALTH : ", name_Of_Opponent().get_HP())
+            print_Stats()
             time.sleep(1)
             print("")
-            guess = name_Of_Opponent().health_Is_Low()
+            guess = name_of_opponent.health_Is_Low()
             if guess == True:
-                print("You Just Defeated ",name_Of_Opponent().get_Name(),".... CONGRATS YOU WON..!!!!", name_Of_Player().get_Name())
+                print("You Just Defeated this", name_of_opponent.get_Name(), " CONGRATS YOU WON..!!!!",name_of_player.get_Name())
                 running = False
 
 
