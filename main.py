@@ -149,6 +149,7 @@ def finisher_Number(n):
     return u
 
 #boxes for storing the number of player and enemy that we got from the above functions
+
 box1=choose_Player()
 box2=choose_Opponent()
 box3=generate_Random_Number(1,21)
@@ -301,80 +302,107 @@ def Cheating():
             print(name_of_partner.name," Health: ",name_of_partner.get_HP())
             time.sleep(2)
 
+def start_Game():
+    chance = 0
+    running = True
+    while running == True:
+
+        print(" ")
+        Cheating()
+        Opponent_Choiceo = generate_Random_Number(1, 3)
+        if Opponent_Choiceo == 1:
+            Object_Attack(name_of_opponent, name_of_player, name_of_opponent.get_Name())
+            print_Stats()
+        elif Opponent_Choiceo == 2:
+            index = int(finisher_Number(name_of_opponent.name))
+            name_of_player.modify_Health()
+            print(finisher[index]['message'])
+            dmg1 = generate_Finisher(index)
+            name_of_player.take_Damage(dmg1)
+            print("Enemy Attacked With Points", dmg1)
+            print_Stats()
+            time.sleep(2)
+        # checking health if its less than 20.. if we found then we change it to 20 coz we dont want negatives or zero
+        name_of_player.modify_Health()
+        time.sleep(1)
+        print("")
+        # checking if health is low and that if the games needs to be paused
+        guess = name_of_player.health_Is_Low()
+        if guess == True:
+            chance = chance + 1
+            if chance == 1:
+                name_of_player.ply_health = name_of_player.ply_health + 80
+                print("Giving You first time bonus of 80")
+            else:
+                # displaying low health message
+                name_of_player.low_Health_Message()
+                running = False
+        else:
+            type_choice = name_of_player.choose_Action()
+            print("")
+
+            if type_choice == 1:
+
+                print("There following objects available to help you with attack")
+                o = 1
+                for item in list_of_Items:
+                    print(o, item)
+                    o += 1
+                Object_Attack(name_of_player, name_of_opponent, "You")
+                name_of_opponent.modify_Health()
+                print_Stats()
+                print("")
+                guess = name_of_opponent.health_Is_Low()
+                if guess == True:
+                    print("You Just Defeated this", name_of_opponent.get_Name(), " CONGRATS YOU WON..!!!!",
+                          name_of_player.get_Name())
+                    running = False
+
+            elif type_choice == 2:
+
+                index = int(finisher_Number(name_of_player.name))
+                name_of_opponent.modify_Health()
+                print(finisher[index]['message'])
+                dmg1 = generate_Finisher(index)
+                name_of_opponent.take_Damage(dmg1)
+                print("You Attacked With Points", dmg1)
+                time.sleep(2)
+                print_Stats()
+                time.sleep(1)
+                print("")
+                guess = name_of_opponent.health_Is_Low()
+                if guess == True:
+                    print("You Just Defeated this", name_of_opponent.get_Name(), " CONGRATS YOU WON..!!!!",
+                          name_of_player.get_Name())
+                    running = False
+
+
+def check_If_Bored():
+    while True:
+        start_Game()
+        mychoice = input("PRESS S TO START A NEW MATCH AND PRESS Q TO EXIT THE GAME\n ")
+        if mychoice == 'S' or mychoice == 's':
+            name_of_player.ply_health=600
+            name_of_opponent.ply_health=600
+            name_of_partner.ply_health=600
+            check_If_Bored()
+        else:
+            print("THANKS FOR PLAYING THIS GAME. BE SURE TO SUGGEST SOME IDEAS IF YOU WISH ")
+            break
+
 
 list_of_Items=['Hammer','Table','Chair','Rod','Stairs']
 chance=0
 running = True
 print_Stats()
 
-while running == True:
+try:
+    check_If_Bored()
 
-    print(" ")
-    Cheating()
-    Opponent_Choiceo = generate_Random_Number(1, 3)
-    if Opponent_Choiceo==1:
-        Object_Attack(name_of_opponent,name_of_player,name_of_opponent.get_Name())
-        print_Stats()
-    elif Opponent_Choiceo==2:
-        index = int(finisher_Number(name_of_opponent.name))
-        name_of_player.modify_Health()
-        print(finisher[index]['message'])
-        dmg1 = generate_Finisher(index)
-        name_of_player.take_Damage(dmg1)
-        print("Enemy Attacked With Points", dmg1)
-        print_Stats()
-        time.sleep(2)
-    #checking health if its less than 20.. if we found then we change it to 20 coz we dont want negatives or zero
-    name_of_player.modify_Health()
-    time.sleep(1)
-    print("")
-    #checking if health is low and that if the games needs to be paused
-    guess = name_of_player.health_Is_Low()
-    if guess == True:
-        chance=chance+1
-        if chance==1:
-            name_of_player.ply_health=name_of_player.ply_health+80
-            print("Giving You first time bonus of 80")
-        else:
-        #displaying low health message
-            name_of_player.low_Health_Message()
-            running = False
-    else:
-        type_choice = name_of_player.choose_Action()
-        print("")
-
-        if type_choice == 1:
-
-            print("There following objects available to help you with attack")
-            o=1
-            for item in list_of_Items:
-                print(o,item)
-                o+=1
-            Object_Attack(name_of_player,name_of_opponent,"You")
-            name_of_opponent.modify_Health()
-            print_Stats()
-            print("")
-            guess = name_of_opponent.health_Is_Low()
-            if guess == True:
-                print("You Just Defeated this",name_of_opponent.get_Name()," CONGRATS YOU WON..!!!!",name_of_player.get_Name())
-                running = False
-
-        elif type_choice == 2:
-
-            index=int(finisher_Number(name_of_player.name))
-            name_of_opponent.modify_Health()
-            print(finisher[index]['message'])
-            dmg1 = generate_Finisher(index)
-            name_of_opponent.take_Damage(dmg1)
-            print("You Attacked With Points", dmg1)
-            time.sleep(2)
-            print_Stats()
-            time.sleep(1)
-            print("")
-            guess = name_of_opponent.health_Is_Low()
-            if guess == True:
-                print("You Just Defeated this", name_of_opponent.get_Name(), " CONGRATS YOU WON..!!!!",name_of_player.get_Name())
-                running = False
+except:
+    a=input("You have Entered an incorrect input or choice plz press f to Start the Game again")
+    if a=='f' or a=='F':
+        check_If_Bored()
 
 
 
